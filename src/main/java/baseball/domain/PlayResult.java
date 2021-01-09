@@ -11,18 +11,19 @@ public class PlayResult {
     public void reportPlayResult(BallStatus ballStatus) {
         if(ballStatus == BallStatus.STRIKE) {
             this.strikeCount++;
-            return;
         }
 
         if(ballStatus == BallStatus.BALL) {
             this.ballCount++;
-            return;
         }
 
         if(ballStatus == BallStatus.NOTHING) {
             this.nothingCount++;
-            return;
         }
+    }
+
+    public boolean isEndGame() {
+        return this.strikeCount == 3;
     }
 
     public int getStrikeCount() { return strikeCount; }
