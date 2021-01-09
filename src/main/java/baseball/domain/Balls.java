@@ -5,13 +5,27 @@ import java.util.List;
 
 public class Balls {
 
+    private final static int BALL_COUNT = 3;
     private List<Ball> balls;
+
     public Balls(List<Integer> balls) {
+//        if(!validateBalls(balls)) {
+//            throw new IllegalArgumentException();
+//        }
+        validateBalls(balls);
         this.balls = new ArrayList<Ball>();
         for (int i = 0; i < balls.size(); i++) {
             this.balls.add(new Ball(i, balls.get(i)));
         }
+
     }
+
+    public static void validateBalls(List<Integer> balls) {
+        if(balls.size() == BALL_COUNT) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 
     public BallStatus play(Ball userBall) {
         // reference Method

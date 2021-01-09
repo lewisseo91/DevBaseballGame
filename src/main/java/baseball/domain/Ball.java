@@ -7,8 +7,16 @@ public class Ball {
     private int val;
 
     public Ball(int pos, int val) {
+        if(!validateBall(val)) {
+            throw new IllegalArgumentException();
+        }
         this.pos = pos;
         this.val = val;
+
+    }
+
+    private boolean validateBall(int val) {
+        return val >=0 && val <=9;
     }
 
     public BallStatus compare(Ball userBall) {

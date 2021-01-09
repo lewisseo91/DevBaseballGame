@@ -1,8 +1,12 @@
 package baseball.view;
 
+import baseball.domain.Balls;
 import baseball.domain.PlayResult;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class BaseballView {
 
@@ -12,9 +16,33 @@ public class BaseballView {
         System.out.println("숫자 야구에 오신 것을 환영합니다.");
     }
 
-    public static int inputBalls() {
-        System.out.println("숫자를 입력해주세요");
-        return scan.nextInt();
+    public static List<Integer> inputBalls() {
+        List<Integer> result;
+
+        do {
+            System.out.println("숫자를 입력해주세요");
+            result = convertStringToListInt(scan.nextLine());
+        } while( checkValidattion(result) );
+
+        return result;
+    }
+
+    private static List<Integer> convertStringToListInt(String input) {
+        return Arrays.asList(input.split("")).stream()
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+
+    }
+
+    private static boolean checkValidattion(List<Integer> input) {
+        try {
+            Balls.validateBalls(input);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            System.out.println("잘못된 숫자 입니다");
+            return false;
+        }
+        return true;
     }
 
     public static void printPlayResultCount(PlayResult playResult) {
@@ -24,7 +52,7 @@ public class BaseballView {
     public boolean printWinner() {
         System.out.println("축하합니다.");
         System.out.println("다시 시작하려면 1을 눌러주세요. 다시 시작 하지 않으려면 다른 것을 눌러주세요.");
-        return scan.nextInt() == 1;
+        return Integer.parseInt(scan.nextLine()) == 1;
     }
 
 }

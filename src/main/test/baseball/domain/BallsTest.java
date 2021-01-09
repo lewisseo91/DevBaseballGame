@@ -9,6 +9,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class BallsTest {
 
@@ -81,6 +82,17 @@ public class BallsTest {
         assertThat(playResult.getBallCount()).isEqualTo(0);
         assertThat(playResult.getNothingCount()).isEqualTo(3);
         // [1,2,3]
+    }
+    @Test
+    public void validateBallsTest () {
+        assertThatThrownBy(()->{
+            new Balls(List.of(1,2));
+        }).isInstanceOf(IllegalArgumentException.class);
+        assertThatThrownBy(()->{
+            new Balls(List.of(1,2,3,4));
+        }).isInstanceOf(IllegalArgumentException.class);
+        Balls comBalls = new Balls(List.of(1,2,3));
+        Balls userBalls = new Balls(List.of(7,8,9));
     }
 
 
