@@ -30,4 +30,15 @@ public class PlayResult {
     public int getBallCount() { return ballCount; }
 
     public int getNothingCount() { return nothingCount; }
+
+    @Override
+    public String toString() {
+        if(strikeCount == 0 && ballCount == 0)
+            return "nothing";
+
+        return "{" +
+                "strikeCount=" + strikeCount +
+                ", ballCount=" + ballCount +
+                '}';
+    }
 }

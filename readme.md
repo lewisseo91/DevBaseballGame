@@ -1,5 +1,4 @@
 # 기능 요구 사항
-
 1. 게임 시작 input
 2. 컴퓨터가 중복 없는 세자리 수 생성
     - 숫자 인지
@@ -21,7 +20,7 @@
 - 추가사항 : 라이프 포인트, 총 기회
 
 # 기능 명세
-
+## 도메인
 com : 345 / user : 123  < balls (List<ball>)
 com 0, 3 | 1, 4 | 2, 5 / 0, 1 | 1, 2 | 2, 3   < ball () return :
 
@@ -29,3 +28,10 @@ com : 0,3 | 2,3  << 1 ball 적립 < result(멤버변수, enum)
 comBall.compare( userBall ) == status.Ball
 
 strike, ball, nothing
+
+## 뷰
+- 게임 시작 인트로
+- 숫자 인풋
+- 볼 스트라이크 개수
+- 축하합니다
+- 다시 시작 인풋
