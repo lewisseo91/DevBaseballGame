@@ -23,7 +23,7 @@ public class PlayResult {
     }
 
     public boolean isEndGame() {
-        return this.strikeCount == 3;
+        return this.strikeCount == Balls.BALL_COUNT;
     }
 
     public int getStrikeCount() { return strikeCount; }
