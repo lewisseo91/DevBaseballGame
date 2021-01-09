@@ -21,10 +21,17 @@ public class Balls {
                 .findFirst()
                 .orElse(BallStatus.NOTHING);
     }
-//
-//    public boolean comparePlay(int pos, int val) {
-//        return this.balls.get(pos)
-//    }
+
+    public PlayResult play(Balls comBalls) {
+        // FIXME: reference Method && userBalls
+        List<Ball> userBalls = this.balls;
+        PlayResult playResult = new PlayResult(this);
+        for(Ball ball: userBalls) {
+            playResult.reportPlayResult(comBalls.play(ball));
+        }
+        return playResult;
+    }
+
     // 1 2 3
     // (0, 2) << userBall
     //for(int i = 0; i < balls.size(); i++) {
