@@ -1,5 +1,7 @@
-package baseball;
+package baseball.domain;
 
+import baseball.domain.Ball;
+import baseball.domain.BallStatus;
 import org.junit.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

@@ -1,9 +1,11 @@
-package baseball;
+package baseball.domain;
 
+import baseball.domain.Ball;
+import baseball.domain.BallStatus;
+import baseball.domain.Balls;
+import baseball.domain.PlayResult;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

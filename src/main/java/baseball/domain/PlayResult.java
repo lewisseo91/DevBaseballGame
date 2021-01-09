@@ -1,4 +1,4 @@
-package baseball;
+package baseball.domain;
 
 public class PlayResult {
     // TODO: 초기화 안하고 값 넣었을 시 0으로 되는 지 테스트
