@@ -1,19 +1,16 @@
 package baseball.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Balls {
 
-    private final static int BALL_COUNT = 3;
+    public final static int BALL_COUNT = 3;
     private List<Ball> balls;
 
     public Balls(List<Integer> balls) {
-//        if(!validateBalls(balls)) {
-//            throw new IllegalArgumentException();
-//        }
         validateBalls(balls);
-        this.balls = new ArrayList<Ball>();
+        this.balls = new ArrayList<>();
         for (int i = 0; i < balls.size(); i++) {
             this.balls.add(new Ball(i, balls.get(i)));
         }
@@ -21,9 +18,15 @@ public class Balls {
     }
 
     public static void validateBalls(List<Integer> balls) {
-        if(balls.size() == BALL_COUNT) {
+
+        if(balls.size() != BALL_COUNT) {
             throw new IllegalArgumentException();
         }
+
+        if(balls.size() != new HashSet<>(balls).size()) {
+            throw new IllegalArgumentException();
+        }
+
     }
 
 
