@@ -3,6 +3,7 @@ package baseball.view;
 import baseball.domain.Balls;
 import baseball.domain.PlayResult;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -22,19 +23,25 @@ public class BaseballView {
         do {
             System.out.println("숫자를 입력해주세요");
             result = convertStringToListInt(scan.nextLine());
-        } while( checkValidattion(result) );
+        } while( !checkValidation(result) );
 
         return result;
     }
 
     private static List<Integer> convertStringToListInt(String input) {
-        return Arrays.asList(input.split("")).stream()
-                .map(Integer::parseInt)
-                .collect(Collectors.toList());
 
+        try {
+            return Arrays.stream(input.split(""))
+                    .map(Integer::parseInt)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return new ArrayList<>();
     }
 
-    private static boolean checkValidattion(List<Integer> input) {
+    private static boolean checkValidation(List<Integer> input) {
         try {
             Balls.validateBalls(input);
         } catch (Exception e) {
@@ -49,7 +56,7 @@ public class BaseballView {
         System.out.println(playResult.toString());
     }
 
-    public boolean printWinner() {
+    public static boolean printWinner() {
         System.out.println("축하합니다.");
         System.out.println("다시 시작하려면 1을 눌러주세요. 다시 시작 하지 않으려면 다른 것을 눌러주세요.");
         return Integer.parseInt(scan.nextLine()) == 1;
